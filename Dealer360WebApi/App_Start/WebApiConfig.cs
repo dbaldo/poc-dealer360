@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Dealer360WebApi.Models;
+using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
 
 namespace Dealer360WebApi
 {
@@ -19,6 +22,14 @@ namespace Dealer360WebApi
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }
 			);
+
+			// New code:
+			ODataModelBuilder builder = new ODataConventionModelBuilder();
+			builder.EntitySet<ProductSales>("ProductSales");
+			config.MapODataServiceRoute(
+				routeName: "ODataRoute",
+				routePrefix: null,
+				model: builder.GetEdmModel());
 		}
 	}
 }
