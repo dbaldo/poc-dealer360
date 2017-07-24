@@ -6,7 +6,6 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using System.Web.OData;
 
@@ -16,21 +15,22 @@ namespace Dealer360WebApi.Controllers
 	{
 		private SalesContext db = new SalesContext();
 
-		private bool ProductExists(int key)
+		private bool ProductExists(string key)
 		{
 			return db.ProductSales.Any(p => p.Id == key);
 		}
 
 		[HttpGet]
-		[EnableQuery]
+		[EnableQuery(AllowedQueryOptions =System.Web.OData.Query.AllowedQueryOptions.All)]
 		public IQueryable<ProductSales> Get()
 		{
-			return db.ProductSales;
+			//return (queryOpts.ApplyTo(db.ProductSales.AsQueryable()) as IQueryable<ProductSales>);
+			return db.ProductSales.AsQueryable();
 		}
 
 		[HttpGet]
 		[EnableQuery]
-		public SingleResult<ProductSales> Get([FromODataUri] int key)
+		public SingleResult<ProductSales> Get([FromODataUri] string key)
 		{
 			IQueryable<ProductSales> result = db.ProductSales.Where(p => p.Id == key);
 			return SingleResult.Create(result);
@@ -50,7 +50,7 @@ namespace Dealer360WebApi.Controllers
 		}
 
 		[HttpPatch]
-		public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<ProductSales> product)
+		public async Task<IHttpActionResult> Patch([FromODataUri] string key, Delta<ProductSales> product)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -81,7 +81,7 @@ namespace Dealer360WebApi.Controllers
 		}
 
 		[HttpPut]
-		public async Task<IHttpActionResult> Put([FromODataUri] int key, ProductSales update)
+		public async Task<IHttpActionResult> Put([FromODataUri] string key, ProductSales update)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -111,7 +111,7 @@ namespace Dealer360WebApi.Controllers
 		}
 
 		[HttpDelete]
-		public async Task<IHttpActionResult> Delete([FromODataUri] int key)
+		public async Task<IHttpActionResult> Delete([FromODataUri] string key)
 		{
 			var product = await db.ProductSales.FindAsync(key);
 			if (product == null)

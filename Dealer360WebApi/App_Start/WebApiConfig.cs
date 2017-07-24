@@ -26,10 +26,13 @@ namespace Dealer360WebApi
 			// New code:
 			ODataModelBuilder builder = new ODataConventionModelBuilder();
 			builder.EntitySet<ProductSales>("ProductSales");
+
+			config.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
 			config.MapODataServiceRoute(
 				routeName: "ODataRoute",
 				routePrefix: null,
 				model: builder.GetEdmModel());
+
 		}
 	}
 }

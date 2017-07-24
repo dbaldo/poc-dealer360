@@ -29,10 +29,10 @@ namespace Dealer360WebApi.Migrations
 			//
 
 			context.ProductSales.AddOrUpdate(x => x.Id,
-				new Models.ProductSales { Id = 1, Category = "4W", Name = "City", QtdSalesMonthly = 200, QtdSalesYearly = 1000 },
-				new Models.ProductSales { Id = 2, Category = "4W", Name = "Fit", QtdSalesMonthly = 530, QtdSalesYearly = 3000 },
-				new Models.ProductSales { Id = 3, Category = "2W", Name = "CG Fan 160", QtdSalesMonthly = 400, QtdSalesYearly = 6000 },
-				new Models.ProductSales { Id = 4, Category = "2W", Name = "SH150i", QtdSalesMonthly = 300, QtdSalesYearly = 6000 }
+				new Models.ProductSales { Id = "1", Category = "4W", Name = "City", QtdSalesMonthly = 200, QtdSalesYearly = 1000 },
+				new Models.ProductSales { Id = "2", Category = "4W", Name = "Fit", QtdSalesMonthly = 530, QtdSalesYearly = 3000 },
+				new Models.ProductSales { Id = "3", Category = "2W", Name = "CG Fan 160", QtdSalesMonthly = 400, QtdSalesYearly = 6000 },
+				new Models.ProductSales { Id = "4", Category = "2W", Name = "SH150i", QtdSalesMonthly = 300, QtdSalesYearly = 6000 }
 				);
 		}
     }

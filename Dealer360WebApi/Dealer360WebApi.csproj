@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201707211030578_Setup.Designer.cs">
       <DependentUpon>201707211030578_Setup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707232206332_Change ProductSales Key.cs" />
+    <Compile Include="Migrations\201707232206332_Change ProductSales Key.Designer.cs">
+      <DependentUpon>201707232206332_Change ProductSales Key.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ProductSales.cs" />
     <Compile Include="Models\SalesContext.cs" />
@@ -296,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707211030578_Setup.resx">
       <DependentUpon>201707211030578_Setup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707232206332_Change ProductSales Key.resx">
+      <DependentUpon>201707232206332_Change ProductSales Key.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
